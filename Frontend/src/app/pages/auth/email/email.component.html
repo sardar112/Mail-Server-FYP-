@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+
+
+        <mat-card class="email">
+
+         
+
+<form  [formGroup]="emailForm" (ngSubmit)="onSave()"  >
+
+    <p class="h4 mb-4"> Recover Your Account </p>
+
+    <div *ngIf="error" class="text-danger">
+        {{error}}
+       </div>
+     
+    <!-- Email -->
+<mat-card-content>
+    <mat-form-field  class="input"  appearance="standard">
+    <mat-label>Recovery E-mail</mat-label>
+    <input matInput type="email" formControlName="recovery_email" required>
+     </mat-form-field>
+
+   
+    
+    <div *ngIf="recovery_email.invalid && recovery_email.touched"  >
+        <small *ngIf = "recovery_email.errors.required" class = "text-danger"> Recovery E-mail is required</small>
+
+      </div>
+    
+    
+    </mat-card-content>
+
+    <!-- Sign in button  [disabled]="!emailForm.valid"  -->   
+    <mat-card-actions>
+        <button mat-raised-button  type="submit"  class="sub  btn-info btn btn-lg"
+         [disabled]="!emailForm.valid">
+         Submit <i class="material-icons right ml-1">send</i></button>
+      </mat-card-actions>
+   
+   
+     <div *ngIf="message" class="text-success">
+        {{message}}
+     </div>
+  
+</form>
+</mat-card>
+
+ 
+        </div>
+        <div class="col-md-3">
+          
+
+        </div>
+    </div>
+</div>
+
+

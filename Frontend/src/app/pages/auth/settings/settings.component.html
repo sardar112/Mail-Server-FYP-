@@ -1,0 +1,144 @@
+
+      <mat-card class="head">
+       
+        <mat-card-content>
+          <h1 class="head">About Me</h1>
+        </mat-card-content>
+      </mat-card>
+
+    
+
+<div class="container-fluid ">
+  <div class="row">
+    <div class="col-md-4">
+     
+    </div>
+    <div class="col-md-4 mt-2" *ngIf="user">
+    
+       
+        <mat-card class="example-card" >
+          <mat-card-header style ="justify-content: center;">
+            <img class="rounded-circle"
+            style=" width: 110px;height: 110px;" alt="Profile Picture"
+             [src]="image">
+          </mat-card-header>
+          <mat-card-content>
+            <table class="table table-hover">
+              <thead><h1>Basic Info </h1></thead>
+              <tbody>
+                <tr>
+                  <td>FIRST NAME :</td>
+                  &nbsp; &nbsp;
+                  <td>{{user.data?.first_name}}</td>
+                </tr>
+
+                <tr>
+
+                  <td>LAST NAME :</td>
+                  &nbsp;
+                  <td>{{user.data?.last_name}}</td>
+                </tr>
+                <tr>
+
+                  <td>GENDER :</td>
+                  &nbsp; &nbsp;
+                  <td>{{user.data?.gender}}</td>
+
+                </tr>
+                <tr>
+
+                  <td>CITY :</td>
+                  &nbsp; &nbsp;
+                  <td>{{user.data?.city}}</td>
+
+                </tr>
+
+              </tbody>
+            </table>
+
+          </mat-card-content>
+
+        </mat-card>
+
+        <div>
+
+          <div>
+            <mat-card class="example-card">
+              <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>
+                  <h1>Contact Info </h1>
+                </mat-card-title>
+
+              </mat-card-header>
+              <mat-card-content>
+                <table class="table table-hover">
+                  <tbody class="mt-5">
+                    <tr>
+                      <td>GOOGLE ACCOUNT :</td>
+                      &nbsp; &nbsp;
+                      <td>{{user.data?.recovery_email}}</td>
+
+                    </tr>
+                    <tr>
+
+                      <td>PHONE NO :</td>
+                      &nbsp;&nbsp;
+                      <td>{{user.data?.phone_number}}</td>
+
+                    </tr>
+                    <tr>
+
+
+                  </tbody>
+                </table>
+
+              </mat-card-content>
+
+            </mat-card>
+          </div>
+          <div>
+            <mat-card class="example-card">
+              <mat-card-actions>
+                <table class="table ">
+                  <tbody>
+                    <tr>
+                      <td>
+                        <button mat-raised-button class="btn btn-info btn-sm my-4 mt-4" type="submit"
+                        matTooltip="Update Account" matTooltipPosition="above"
+                          (click)="updateAccount()">Update Account
+                          <i class="material-icons right ml-1">edit</i></button>
+                      </td>
+                      <td>
+                        <button mat-raised-button class="btn btn-info btn-sm my-4 mt-4" type="submit"
+                        matTooltip="Delete Account" matTooltipPosition="above"
+                          (click)="deleteAccount()">Delete Account
+                          <i class="material-icons right ml-1">delete_forever</i>
+                        </button>
+
+                      </td>
+
+                    </tr>
+                  </tbody>
+
+                </table>
+              </mat-card-actions>
+
+            </mat-card>
+
+          </div>
+          <div>
+
+          </div>
+
+        </div>
+
+      </div>
+      <div class="col-md-4">
+
+
+
+
+      </div>
+    </div>
+  </div>

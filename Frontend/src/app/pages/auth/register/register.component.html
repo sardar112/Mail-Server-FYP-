@@ -1,0 +1,183 @@
+<div class="container mt-2">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <mat-card class=" reg">
+   
+<form   [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+  <p class="h4 mb-3">Create Your Account </p>
+ <div *ngIf="error" class="text-danger">
+  {{message}}
+ </div>
+ <div *ngIf="message" class="text-success">
+  {{message}}
+ </div>
+<mat-card-content>
+  <div class="form-row ">
+      <div class="col">
+          <!--##################################################### First name #############################################################-->
+          <mat-form-field  class=""  appearance="standard">
+            <mat-label>First Name</mat-label>
+           <input matInput type="text"  formControlName="first_name"  required>
+            </mat-form-field>
+         
+          <div *ngIf="first_name.invalid && first_name.touched"  >
+            <small *ngIf = "first_name.errors.required" class = "text-danger"> First name is required</small>
+            <small *ngIf = "first_name.errors.minlength" class = "text-danger"> minimum length should be at least 5 characters</small>
+          </div>
+         
+      </div>
+      <div class="col">
+          <!--########################################## Last name ########################################################################-->
+          <mat-form-field  class=""  appearance="standard">
+            <mat-label>Last Name</mat-label>
+           <input matInput type="text"      formControlName="last_name"  required>
+            </mat-form-field>
+          <div *ngIf="last_name.invalid && last_name.touched" >
+            <small *ngIf = "last_name.errors.required" class = "text-danger"> Last Name is required</small>
+            <small *ngIf = "last_name.errors.minlength" class = "text-danger"> Minimum length should be at least 5 characters</small>
+          </div>
+       
+      </div>
+  </div>
+ 
+  
+  <!-- E-mail ######################################################################################################################### -->
+  <div class="form-row">
+     <div class="col">
+      <mat-form-field  class="input"  appearance="standard">
+        <mat-label>E-mail</mat-label>
+       <input matInput type="email" formControlName="email" required>
+        </mat-form-field>
+        <div *ngIf="email.invalid && email.touched">
+           <small *ngIf="email.errors.required" class="text-danger"> Email is required</small>
+       </div>
+     </div> 
+
+     <div class="col">
+      
+      <mat-form-field  class="input"  appearance="standard">
+        <mat-label>Recovery Email</mat-label>
+       <input matInput type="email"  formControlName="recovery_email" required>
+        </mat-form-field>
+        <div *ngIf="recovery_email.invalid && recovery_email.touched">
+          <small *ngIf = "recovery_email.errors.required" class = "text-danger">Recovery Email is required</small>
+        </div>
+     </div>
+    </div>
+  <!--############################-->
+  
+  
+
+  <div class="form-row ">
+    <div class="col">
+        <!--####################################### Password ###############################################################################-->
+        <mat-form-field  class=""  appearance="standard">
+          <mat-label>Password</mat-label>
+         <input matInput type="password"  formControlName="password"  required>
+          </mat-form-field>
+        <div *ngIf="password.invalid && password.touched" >
+          <small *ngIf = "password.errors.required" class = "text-danger"> Password is required</small>
+          <small *ngIf = "password.errors.minlength" class = "text-danger"> Minimum length should be at least 5 characters</small>
+        </div>
+    </div>
+    <div class="col">
+        <!--############################################ confirm  pasword################## ###############################################-->
+        <mat-form-field  class=""  appearance="standard">
+          <mat-label>Confirm Password</mat-label>
+         <input matInput type="password"   formControlName="confirm_password"  required>
+          </mat-form-field>
+
+        <div *ngIf=" confirm_password.invalid && confirm_password.touched" >
+          <small *ngIf = "confirm_password.errors.required" class = "text-danger"> Confirm Password is required</small>
+          <small *ngIf = "confirm_password.errors.minlength " class = "text-danger"> Minimum length should be at least 5 characters</small>
+          <small *ngIf="confirm_password.errors?.mustMatch" class = "text-danger">Password and confirm password should match</small>
+        
+
+          </div>
+         
+    </div>
+</div>
+  
+  
+  <!-- ######################################### Phone number  ########################################################################################### -->
+  <div class="form-row">
+    <div class="col">
+      <mat-form-field  class="input"  appearance="standard">
+        <mat-label>Phone Number</mat-label>
+       <input matInput type="text"   formControlName="phone_number" required>
+        </mat-form-field>
+        <div *ngIf="phone_number.invalid && phone_number.touched" >
+          <small *ngIf = "phone_number.errors.required" class = "text-danger"> Phone Number is required</small>
+          <small *ngIf = "phone_number.errors.minlength" class = "text-danger"> Minimum length should be at least 11 </small>
+        </div>
+    </div>
+    <div class="col-6 mt-md-4">
+      <input type="file" formControlName="image" (change)="onFileSelect($event)" required>
+
+    </div>
+  </div>
+
+
+  <!--#################################################################################################################################-->
+
+  <div class="form-row  ">
+    <div class="col" >
+      <mat-form-field appearance="standard">
+        <mat-label>Select City</mat-label>
+        <mat-select matNativeControl required formControlName="city" >
+        <mat-option value="Islamabad">Islamabad</mat-option>
+        <mat-option value="Lahore">Lahore</mat-option>
+        <mat-option value="Karachi">Karachi</mat-option>
+        <mat-option value="RawalPindi" >RawalPindi</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div *ngIf="city.invalid && city.touched" >
+        <small *ngIf = "city.errors.required" class = "text-danger">Please Select City</small>
+   
+      </div>
+    
+      
+    </div>
+    <!-- ............................. -->
+    <div class="col">
+      <mat-form-field appearance="standard">
+        <mat-label>Select City</mat-label>
+        <mat-select matNativeControl required formControlName="gender">
+          <mat-option value="Mail">Male</mat-option>
+          <mat-option value="Femail">Female</mat-option>
+          <mat-option value="Others">Others</mat-option>
+        </mat-select >
+      </mat-form-field>
+    
+      <div *ngIf="gender.invalid && gender.touched" >
+        <small *ngIf = "gender.errors.required" class = "text-danger"> Please Select Gender</small>
+       
+      </div>
+</div>
+    
+  </div>
+
+  
+</mat-card-content>
+
+    <!-- Sign in button########################################################################################################### -->
+  <mat-card-actions>
+    <button mat-raised-button  type="submit"  class="sub  btn-info btn btn-lg"
+    [disabled]="!registerForm.valid">
+    Sign Up<i class="material-icons right ml-1">send</i></button>
+  </mat-card-actions>
+
+  <p>Already have an Account?
+    <a href="login"   (click)="login()">Login Here</a>
+</p>
+ 
+</form>
+</mat-card>
+
+ 
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+
+.compose{
+    position: fixed;
+    width: 580px;
+    height: 580px;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+  right: 5% !important;
+  bottom: 0% !important;
+  
+
+}
+
+ul{
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+
+
+p{
+  margin-top: 1%;
+  margin-bottom: 1%;
+  margin-left: 1%;
+}
+.head {
+
+ color:#ffffff; 
+ background-color:   #000000;
+ cursor: pointer;
+  border-top-left-radius: 0.5rem;
+   border-top-right-radius: 0.5rem;
+  
+}
+
+
+
+.too{
+  width: 100%;
+  border :none;
+}
+
+.material-icons{
+ margin-right: 2px;
+ cursor: pointer;
+}

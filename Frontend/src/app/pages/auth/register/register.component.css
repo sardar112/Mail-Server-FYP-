@@ -1,0 +1,28 @@
+
+.reg{
+    width: 510px;
+    height: 700px;
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 40px;
+    text-align: center;
+box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0
+ rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12);
+}  
+
+
+
+  .input{
+      width: 95%;
+         
+  }
+
+  .sub{
+   
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    
+}
+
+
+

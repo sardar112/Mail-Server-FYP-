@@ -1,0 +1,19 @@
+.p {
+    background-color: #ffddff;
+
+}
+
+.compose{
+    width: 70%;
+    height: 40px;
+    font-size: small;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    margin-left: 0.5rem;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    
+}
+

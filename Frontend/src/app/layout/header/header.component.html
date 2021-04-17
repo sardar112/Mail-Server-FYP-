@@ -1,0 +1,53 @@
+
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light m-auto">
+    <a class="navbar-brand" href="#"><img class = "mr-2"  src="../../../../assets/Logo.png"
+      matTooltip="A-Mail" matTooltipPosition="left"
+       style="width: 50px; height: 40px;">A-Mail</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+ 
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+       
+          <form class="form-inline my-2 my-lg-0 ml-5" >
+            
+            <div>
+          
+             
+            
+              <input style="width: 700px; border-radius: 0.7rem;" class="form-control form-rounded "
+               type="text" placeholder="Search" aria-label="Search" >
+              <button class="btn btn-sm">
+                <i class="fa fa-search fa-2x" aria-hidden="true" matTooltip="search"
+                matTooltipPosition="above"></i>
+
+              </button>
+            </div>
+          
+          
+          </form>
+         
+     
+    
+    
+
+      <ul class="navbar-nav ml-auto nav-flex-icons">
+       
+    
+        <li class="nav-item">
+          <a class="nav-link waves-effect waves-light">
+            <i class="material-icons " (click)="setting()"  matTooltip="Settings" matTooltipPosition="above">settings</i>
+          </a>
+        </li>
+        <li class="nav-item">
+       
+            <a class="nav-link" href="login" (click)="logOut()"matTooltip="LogOut"
+             matTooltipPosition="above"><li class="material-icons" >logout</li></a>
+         
+        </li>
+      
+      </ul>
+    </div>
+  </nav>

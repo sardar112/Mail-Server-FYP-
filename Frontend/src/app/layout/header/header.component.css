@@ -1,0 +1,11 @@
+.material-icons{
+    margin-right: 0px;
+    cursor: pointer;
+   }
+   
+   .search{
+    width: 650px;height:40px ;
+     border-radius: 1rem;
+    margin-left: 3rem;
+    box-shadow: 10px;
+   }
