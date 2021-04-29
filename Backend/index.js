@@ -37,8 +37,8 @@ require('dotenv').config({path:'config/.env'});
  app.use(helmet());
 app.use(cors());
 app.use(hpp()); 
-app.use (bodyParser.urlencoded({limit:"50mb", extended: true }));
-app.use(bodyParser.json({limit:"50mb", extended: true }));             
+app.use (bodyParser.urlencoded({limit:"50mb", extended: false }));
+app.use(bodyParser.json());             
 
 
 app.use(morgan("dev"));

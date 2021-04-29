@@ -1,1 +1,21 @@
-<p>mail-details works!</p>
+<mat-card class="mail mt-3 mr-3">
+    <mat-card-content class="mt-4" *ngIf="email">
+        <p class="h3 mb-2" >{{email.subject ||"(no subject)"}}</p>
+
+      <div class="row ">
+        <div class="col-12">
+      
+           <p class=" mb-2" >To :{{email.to}}</p>
+           <p class=" mb-2" >From : {{email.from}}</p>
+           <p class=" mb-2" >Date : Dummy</p>
+           <p class=" mb-2" [innerHtml]>Description : {{email.description}}</p>
+
+
+        </div>
+     
+        
+      </div>
+   </mat-card-content>
+ 
+ </mat-card>
+ 

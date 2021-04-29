@@ -44,8 +44,8 @@ return res.json({
 
    // const token = jwt.sign({ _id: user._id }, config.get('PrivateKey'));
     
-    const token = jwt.sign({ _id: user._id }, process.env.PRIVATE_KEY);
-
+    const token = jwt.sign({ _id: user._id,email:user.email }, process.env.PRIVATE_KEY);
+    console.log(token);
 
    // res.header('x-auth-token', token).send(_.pick(user, ['id','first_name','last_name','email']));
     res.json({

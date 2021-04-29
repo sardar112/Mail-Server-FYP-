@@ -10,17 +10,30 @@ import {Mail} from './mail.model';
 })
 export class MailComponent implements OnInit {
   public showIcons = false;
-  mails :Mail[]=[];
+ public mails :Mail;
+ // public mails :any[]=[];
+
   constructor(private data: DataService, private router: Router) { }
 
   ngOnInit(): void {
-    this.data.getData().subscribe( (data )=> {
-      this.mails=data;
-  this.data.mailLength.next(this.mails.length);
+    this.data.getData().subscribe(res => {
+  this.data.mailLength.next(res.data.length);
+    this.mails=res;
+ console.log(this.mails)
+//     this.mails= res.map(d=>{
+//         to:d.to;
+//         from:d.from;
+//         subject:d.subject;
+
+        
+
+//       });
+//       console.log(data);
+    
      },
     err =>{
     console.log(err);
-    
+   
     });
 
   }
@@ -32,8 +45,8 @@ export class MailComponent implements OnInit {
       this.showIcons = false;
     }
 
-    onLoadMaildeitail(){
-      this.router.navigate(['/child/mail-details']);
+    onLoadMaildeitail(id){
+      this.router.navigate(['/child/mail-details',id]);
     }
 
 }

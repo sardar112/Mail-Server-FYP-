@@ -1,5 +1,12 @@
 export interface Mail{
-    sender : String,
-    title : String,
-    description : String
+    data:Data[],
+    error:boolean
+    //description : String
+    //files : String
+}
+export interface Data{
+    _id:String,
+    to : String,
+    from : String,
+    subject : String,
 }

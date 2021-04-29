@@ -8,14 +8,9 @@ const express = require('express');
 const router = express.Router();
 
 router.post('/',upload.single('profile') ,async (req, res) => {
-    // res.json({
-    //      profile: req.file.filename,
-    //     ...req.body,
-    //     success: true,
-    // })
- 
+   
     const { error } = validate({...req.body,image: req.file.filename});
-     console.log(error);
+    // console.log(error);
     if (error) {
 
         return res.json({
@@ -50,7 +45,7 @@ router.post('/',upload.single('profile') ,async (req, res) => {
         await user.save();
         res.json({
             error: false,
-            message : " Register Succecfully !",
+            message : " User Registered Succecfully ",
             status : 200
         });
     }

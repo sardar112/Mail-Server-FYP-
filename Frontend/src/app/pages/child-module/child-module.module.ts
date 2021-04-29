@@ -5,6 +5,7 @@ import { Router, RouterModule, Routes } from '@angular/router';
 import { ChildModuleComponent } from './child-module.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 import { InboxComponent } from '../inbox/inbox.component';
 import { AllMailsComponent } from '../all-mails/all-mails.component';
@@ -19,6 +20,7 @@ import { MailComponent } from '../../shared/components/mail/mail.component';
 import { ComposeComponent } from '../compose/compose.component';
 import {AuthGuard} from '../../shared/guard/auth.guard';
 import { MaterialModule } from '../public/material/material.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 const childRoutes : Routes = [
@@ -33,7 +35,7 @@ const childRoutes : Routes = [
     { path : "sent" , component : SentComponent}, 
     { path : "draft" , component : DraftComponent},
     { path : "important" , component : ImportantComponent}, 
-    { path : "mail-details" , component : MailDetailsComponent}, 
+    { path : "mail-details/:id" , component : MailDetailsComponent}, 
 
   
 
@@ -63,6 +65,8 @@ const childRoutes : Routes = [
   imports: [
     CommonModule,
     MaterialModule,
+    CKEditorModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       timeOut: 10000,

@@ -1,9 +1,11 @@
-
-<div class="pop" *ngFor="let mail of mails" > 
+<h1 *ngIf="!mails">loading...</h1>
+<h1 *ngIf="mails&&mails.data.length===0">No mail found</h1>
+<div *ngIf="mails&&mails.data&&mails.data.length>0">
+<div class="pop"  *ngFor="let mail of mails.data" > 
   <div class="container-fluid pointer shadow-sm p-3  bg-light rounded mt-1"
 
    id="mail"       (mouseover)="over()" (mouseout)="leave()">
-    <div class="row" (click)="onLoadMaildeitail()">
+    <div class="row" (click)="onLoadMaildeitail(mail._id)">
       <div class="col-lg-1">
           <div class="form-check">
               <input type="checkbox" class="form-check-input" id="materialUnchecked">
@@ -11,11 +13,12 @@
       </div>
 
       <div class="col-lg-1">
-          {{mail.sender}}
+          {{mail.to}}
       </div>
       <div class="col-lg-8">
-          {{mail.title}}-- {{mail.description}}
-        </div>
+        ----------------------------------  {{mail.subject}}--------- {{mail.from}}
+        </div>  
+                
        
 
         <div class="col-lg-2 pl" >
@@ -62,3 +65,4 @@
   </div>
   
   </div>
+</div>

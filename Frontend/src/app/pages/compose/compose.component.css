@@ -44,3 +44,17 @@ p{
  margin-right: 2px;
  cursor: pointer;
 }
+
+
+
+:host ::ng-deep .ck-editor__editable_inline {
+  min-height: 320px;
+}
+
+
+#upload_button {
+  display: inline-block;
+}
+#upload_button input[type=file] {
+  display:none;
+}

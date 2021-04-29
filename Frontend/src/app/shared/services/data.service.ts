@@ -15,7 +15,12 @@ export class DataService {
   constructor( private http : HttpClient) { }
    getData(){
 
-    return this.http.get<Mail[]>("http://localhost:3000/api/mails");
+    return this.http.get<Mail>("http://localhost:3000/api/mail/from");
+
+   }
+   getSingleEmail(id){
+
+    return this.http.get<any>("http://localhost:3000/api/mail/single/"+id);
 
    }
    // update user

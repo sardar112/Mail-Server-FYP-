@@ -1,93 +1,69 @@
-const Joi = require('joi');
+//const Joi = require('joi');
 //const filter = require('../middleware/multer');
 const auth = require('../middleware/auth').auth;
 
 const multer = require('multer');
 const path = require('path');
+const Mails = require('./../models/mail');
 
 const express = require('express');
-const { date } = require('joi');
 const router = express.Router();
 
 
 // const storage = multer.diskStorage({
-//     destination: 'uploads/profile/',
+//     destination: 'uploads/mails/',
 //     filename: function(req, file, cb) {
-//         cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+//         cb(null, file.fieldname + '-' + Date.now() + file.originalname);
 //     }
     
 // });
+//  let upload=multer({ storage: storage});, upload.fields([{name:'files',maxCount:2}])
 
-
-router.post('/', async (req, res) => {
-
-    const { error } = validate(req.body);
-    if (error) {
-        return res.status(400).send(error.details[0].message);
-    }
-    //  let upload = multer({ storage: storage, fileFilter: filter.imageFilter }).array('mailImages', 10);
-
-    // await  upload(req, res, function(err) {
-    //     if (req.fileValidationError) {
-    //         return res.send(req.fileValidationError);
-    //     }
-    //     else if (!req.file) {
-    //         return res.send('Please select an image to upload');
-    //     }
-    //     else if (err instanceof multer.MulterError) {
-    //         return res.send(err);
-    //     }
-    //     else if (err) {
-    //         return res.send(err);
-    //     }
-
-    //     let result = "You have uploaded these images: <hr />";
-    //     const files = req.files;
-    //     // let index, len;
-
-    //     // for (index = 0, len = files.length; index < len; ++index) {
-    //     //     result += `"${files[index].path}"`;
-    //     // }
-        
-    //     // res.send("success");
-    // });
-
-   let mails = {
-       recipient: req.body.recipient,
-       subject: req.body.subject,
-       content: req.body.content
-     
-     
-   }
-   if(mails){
-       res.json({error:false , data : mails})
-
-       console.log(mails);
-   }else{
-       res.json({error:true,message: "Error mail cant send"})
-   }
+router.post('/',auth,async (req, res) => {
+console.log(req.user);
    
-    
+
+   let mail =  new Mails({
+       ...req.body,
+       from:req.user.email,
+    //    files:req.files['files'].map(ele=>{
+    //        return 'uploads/mails/'+ele.filename;
+    //    }),
+      
+     
+   });
+  console.log(mail);
+   mail= await mail.save();
+    if(mail){
+    res.json({
+        error: false, data : mail,message:"Email Sent"
+    });
+}else{
+    res.json({
+        error: true, message: 'fail'
+    });
+}
+   // console.log(mail);
 });
 
 
+//single Email
 
+// [innerHtml]=
 
-function validate(mail) {
-    const mails = Joi.object({
+router.get('/single/:id',auth, async (req, res)=>{
+    let mails= await Mails.findById({_id:req.params.id});
+   res.json({error: false,data:mails});
+});
 
-     to: Joi.string().email().required(),
-        subject: Joi.string().min(5).max(255),
-        content: Joi.string().min(5).max(1024),
-      
-    
-        
-      
+router.get('/to',auth, async (req, res)=>{
+     let mails= await Mails.find({to:req.user.email});
+    res.json({error : false, data:mails});
+});
 
-    });
-  return  mails.validate(mail);
-    
-}
-
+router.get('/from',auth, async (req, res)=>{
+    let mails= await Mails.find();
+   res.json({error: false,data:mails});
+});
  
 module.exports = router; 

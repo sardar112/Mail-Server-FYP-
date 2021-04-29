@@ -4,7 +4,8 @@ export interface composeEmail{
     message?:String,
     data?:{
     to: String,
-   subject: String,
-    content:String,
+    subject: String,
+    description: String,
+   // files:[]
     }
 }
