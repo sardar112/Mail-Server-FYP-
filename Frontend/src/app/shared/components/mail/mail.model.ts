@@ -1,4 +1,5 @@
 export interface Mail{
+    message: String;
     data:Data[],
     error:boolean
     //description : String
@@ -9,4 +10,6 @@ export interface Data{
     to : String,
     from : String,
     subject : String,
+    description : String,
+    date:Date
 }

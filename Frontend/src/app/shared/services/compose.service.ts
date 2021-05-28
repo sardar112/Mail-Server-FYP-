@@ -16,7 +16,9 @@ export class ComposeService {
 
   submitEmail(data){
     
-     return this.http.post<composeEmail>("http://localhost:3000/api/mail",data);
+     return this.http.post<composeEmail>("http://68.183.107.82:3000/api/mail",data);
+    // return this.http.post<composeEmail>("http://localhost:3000/api/mail",data);
+
   }
 
 }

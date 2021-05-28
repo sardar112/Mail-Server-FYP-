@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { DataService } from 'src/app/shared/services/data.service';
 import { LoginService } from 'src/app/shared/services/login.service';
 import {MustMatch} from '../../../shared/passValidator'
@@ -18,7 +19,9 @@ export class EditprofileComponent implements OnInit {
   message : String;
 
 
-  constructor( private updateUser : DataService, private fb : FormBuilder,private router : Router) { }
+  constructor( private updateUser : DataService,
+     private fb : FormBuilder,
+     private router : Router, private toast: ToastrService) { }
   editForm : FormGroup;
 
 get first_name(){
@@ -67,10 +70,9 @@ get city(){
    onUpdate(){
 this.updateUser.updateUser(this.editForm.value).subscribe(res => {
 if(res.error){
-  this.error = res.message;
-  console.log(res);
+this.toast.error(res.message.toString(),"Error");
 }else{
-  this.message= res.message;
+  this.toast.success(res.message.toString(),"Success");
   this.router.navigate(['settings']);
 
 }

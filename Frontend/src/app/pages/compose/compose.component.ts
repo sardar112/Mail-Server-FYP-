@@ -14,7 +14,7 @@ export class ComposeComponent implements OnInit {
   message : String;
   Composed : boolean = true;
   composeForm : FormGroup;
-  selectedFile: File;
+  selectedFile:string[]=[];
   
 
   constructor(private compose : ComposeService,private fb: FormBuilder) {
@@ -50,10 +50,13 @@ export class ComposeComponent implements OnInit {
 
   };
 
-  // onFileSelect(event){
-  //   this.selectedFile = event.target.files;
+  onFileSelect(event){
 
-  // }
+    for(var i=0; i < event.terget.files.length; i++){
+      this.selectedFile.push(event.terget.files[i]);
+    }
+
+  }
 
 onSubmitCompose(e){
   // let values = this.composeForm.value;
@@ -61,7 +64,9 @@ onSubmitCompose(e){
   // Object.keys(values).forEach(key => {
   //   formdata.append(key, values[key]);
   // });
-  // formdata.append("files",this.selectedFile);
+  for(var i=0; i < this.selectedFile.length; i++){
+  // formdata.append("files",this.selectedFile[i]);
+}
 
 
  // e.preventDefault();

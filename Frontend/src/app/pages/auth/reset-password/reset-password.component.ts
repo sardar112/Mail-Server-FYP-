@@ -4,6 +4,7 @@ import { Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ForgotPasswordService } from '../../../shared/services/forgot-password.service';
 import { MustMatch} from '../../../shared/passValidator';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-reset-password',
@@ -17,7 +18,11 @@ export class ResetPasswordComponent implements OnInit {
   message : String;
   token : string;
 
-  constructor(private router: Router, private fb: FormBuilder,private activatedRoute: ActivatedRoute,private reset : ForgotPasswordService) { }
+  constructor(
+    private router: Router, private fb: FormBuilder,
+    private activatedRoute: ActivatedRoute,
+    private reset : ForgotPasswordService, private toast: ToastrService
+    ) { }
 
   resetForm : FormGroup;
 
@@ -53,9 +58,9 @@ export class ResetPasswordComponent implements OnInit {
     if(this.resetForm.valid){
     this.reset.resetPassword(this.token,this.resetForm.value).subscribe(res => {
       if(res.error){
-        this.error=res.message;
+        this.toast.error(res.message.toString(),"Error");
       }else{
-        this.message=res.message;
+        this.toast.success(res.message.toString(),"Success");
         this.router.navigate(['login']);
       }
     })

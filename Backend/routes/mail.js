@@ -10,25 +10,25 @@ const express = require('express');
 const router = express.Router();
 
 
-// const storage = multer.diskStorage({
-//     destination: 'uploads/mails/',
-//     filename: function(req, file, cb) {
-//         cb(null, file.fieldname + '-' + Date.now() + file.originalname);
-//     }
+const storage = multer.diskStorage({
+    destination: 'uploads/mails/',
+    filename: function(req, file, cb) {
+        cb(null, file.fieldname + '-' + Date.now() + file.originalname);
+    }
     
-// });
-//  let upload=multer({ storage: storage});, upload.fields([{name:'files',maxCount:2}])
+});
+ let upload=multer({ storage: storage});// upload.fields([{name:'files',maxCount:2}])
 
-router.post('/',auth,async (req, res) => {
+router.post('/',auth,upload.fields([{name:'files',maxCount:2}]),async (req, res) => {
 console.log(req.user);
    
 
    let mail =  new Mails({
        ...req.body,
        from:req.user.email,
-    //    files:req.files['files'].map(ele=>{
-    //        return 'uploads/mails/'+ele.filename;
-    //    }),
+       files:req.files['files'].map(ele=>{
+           return 'uploads/mails/'+ele.filename;
+       }),
       
      
    });
@@ -47,23 +47,38 @@ console.log(req.user);
 });
 
 
-//single Email
-
-// [innerHtml]=
+//Single Email
 
 router.get('/single/:id',auth, async (req, res)=>{
-    let mails= await Mails.findById({_id:req.params.id});
-   res.json({error: false,data:mails});
+    let mail= await Mails.findById({_id:req.params.id});
+   res.json({error: false,data:mail});
 });
+
+
+//Recepient Emails
 
 router.get('/to',auth, async (req, res)=>{
      let mails= await Mails.find({to:req.user.email});
     res.json({error : false, data:mails});
 });
 
+// Sender Emails
 router.get('/from',auth, async (req, res)=>{
     let mails= await Mails.find();
    res.json({error: false,data:mails});
 });
+
+// seacxring emails
+router.post('/search',async (req, res)=> {
+    
+    let data = await Mails.find({$or:[{ subject:req.body.subject},{to:req.body.to}]});
+    if(data){
+      res.json({error: false ,data: data});
+    }else{
+      res.json({error: true ,message:" No Emails found"});
+    }
+  
+  });
+  
  
 module.exports = router; 

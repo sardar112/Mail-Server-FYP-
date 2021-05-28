@@ -13,18 +13,19 @@
        
           <div class="form-inline my-2 my-lg-0 ml-5" >
             
-            <div>
+            <form [formGroup]="searchFrom" (ngSubmit)="onSearchEmail()" >
           
-             
             
-              <input style="width: 700px; border-radius: 0.7rem;" class="form-control form-rounded "
-               type="text" placeholder="Search" aria-label="Search" >
-              <button class="btn btn-sm">
-                <i class="fa fa-search fa-2x" aria-hidden="true" matTooltip="search"
-                matTooltipPosition="above"></i>
 
+              <input style="width: 700px;"
+               class="form-control  "
+               type="text" placeholder="Search" aria-label="Search" formControlName="search">
+             
+              <button class="btn btn-sm">
+                  
+              <span class="fa fa-search fa-2x "  matTooltip="search"   matTooltipPosition="above"></span>
               </button>
-            </div>
+            </form>
           
           
           </div>

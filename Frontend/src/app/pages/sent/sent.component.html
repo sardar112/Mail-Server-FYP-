@@ -1,1 +1,60 @@
-<p>sent works!</p>
+<h1 *ngIf="!mails">Loading...</h1>
+<h1 *ngIf="mails&&mails.data.length===0">No Email Found</h1>
+<div *ngIf="mails&&mails.data&&mails.data.length>0">
+  <div class="pop" *ngFor="let mail of mails.data">
+    <div class="container-fluid pointer shadow-sm p-3  bg-light rounded mt-1" id="mail">
+      <div class="row" (click)="onLoadMaildeitail(mail._id)">
+        <span class="col-1">
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input">
+          </div>
+        </span>
+
+
+        <div class="col-lg-8">
+
+          <span class="">{{mail.subject}}</span>
+          <span class="ml-2">{{mail.description}}</span>
+
+
+        </div>
+        <div class="col-lg-2">
+
+          <span class="ml-2"> {{mail.date}}</span>
+        </div>
+
+
+
+        <!-- <div class="col-lg-2 pl" >
+          <div class="row"*ngIf ="showIcons">
+
+          <div class="col-lg-2">
+             
+            <span class="archive">
+              <i class="fa fa-archive"></i>  
+              
+             </span>
+           </div>
+
+           <div class="col-lg-2">
+            <span class="trash">
+             <i class="fa fa-trash-o  " aria-hidden="true"></i>
+            </span>
+               </div>
+
+               
+
+        
+          
+
+      
+      </div>
+        
+        </div> -->
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

@@ -8,18 +8,20 @@
             <form  [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
                 <p class="h4 mb-4">Sign In</p>
-
+<!-- 
                 <div *ngIf="error" class="text-danger">
                     {{error}}
                 </div>
                 <div *ngIf="message" class="text-success">
                     {{message}}
 
-                </div>
+                </div> -->
             <mat-card-content>
                 <!-- Email ..............................................................................................-->
                 <mat-form-field  class="input"  appearance="standard">
                  <mat-label>E-mail</mat-label>
+                 <mat-icon matSuffix>email</mat-icon>
+
                 <input matInput type="email" formControlName="email" required>
                  </mat-form-field>
                  <div *ngIf="email.invalid && email.touched">
@@ -31,6 +33,8 @@
                 <!-- Password................................................................................................... -->
                 <mat-form-field  class="input"  appearance="standard">
                     <mat-label>Password</mat-label>
+                    <mat-icon matSuffix>lock </mat-icon>
+
                     <input matInput type="password" formControlName="password" required>
                      </mat-form-field>
                 
@@ -61,7 +65,7 @@
 
                 <!-- Register -->
                 <p>Not a Member?
-                    <a href="register" (click)="register()">Register</a>
+                    <a href="/register" (click)="register()">Register</a>
                 </p>
 
 

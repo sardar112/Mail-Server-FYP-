@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import {Router } from '@angular/router';
-import { DataService } from 'src/app/shared/services/data.service';
 import { ComposeService } from 'src/app/shared/services/compose.service';
+import { EmailsService } from 'src/app/shared/services/emails.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -12,14 +12,14 @@ import { ComposeService } from 'src/app/shared/services/compose.service';
 export class SidebarComponent implements OnInit {
 
   totalMails :number;
-  constructor(private router : Router , private data:DataService, private compose : ComposeService) { }
+  constructor(private router : Router , private email:EmailsService, private compose : ComposeService) { }
   showComposed(){
     this.compose.allowCompose.next(true);
   }
   
 
   ngOnInit(): void {
-    this.data.mailLength.subscribe((length)=>{
+    this.email.mailLength.subscribe((length)=>{
       this.totalMails = length;
     }
     );
@@ -39,14 +39,5 @@ export class SidebarComponent implements OnInit {
     this.router.navigate(['/child/all-mails']);
   }
   
-  onLoadDraft(){
-
-    this.router.navigate(['/child/draft']);
-
-  }
-
-  onLoadimportant(){
-    this.router.navigate(['/child/important']);
-  }
  
 }

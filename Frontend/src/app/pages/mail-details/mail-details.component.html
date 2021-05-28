@@ -1,5 +1,5 @@
-<mat-card class="mail mt-3 mr-3">
-    <mat-card-content class="mt-4" *ngIf="email">
+<div class="mail mt-3 mr-3">
+    <div class="mt-4" *ngIf="email">
         <p class="h3 mb-2" >{{email.subject ||"(no subject)"}}</p>
 
       <div class="row ">
@@ -7,15 +7,24 @@
       
            <p class=" mb-2" >To :{{email.to}}</p>
            <p class=" mb-2" >From : {{email.from}}</p>
-           <p class=" mb-2" >Date : Dummy</p>
-           <p class=" mb-2" [innerHtml]>Description : {{email.description}}</p>
+           <p class=" mb-2" >Date : {{email.date | date:'fullDate' }}</p>
+           <p class=" mb-2" >Description : {{email.description}}</p>
 
 
         </div>
      
         
       </div>
-   </mat-card-content>
+      <hr>
+<div *ngIf="email.files&&email.files.length>0">
+      <div *ngFor="let file of email.files" class="col-md-3">
+      {{imageExtension(file)}}
+        <img  *ngIf="imageExtension(file)" [src]="'http://68.183.107.82:3000/'+file" style="width: 50px;height: 50px;"/>
+        <a [href]="'http://68.183.107.82:3000/'+file" *ngIf="!imageExtension(file)">xDownloadOptions</a>
+      </div>
+</div>
+      <button class="btn btn-danger mt-2" (click)="onDeleteEmail()">Delete</button>
+    </div>
  
- </mat-card>
+  </div>
  

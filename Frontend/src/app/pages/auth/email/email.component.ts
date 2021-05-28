@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import {ForgotPasswordService} from '../../../shared/services/forgot-password.service';
 @Component({
   selector: 'app-email',
@@ -8,7 +9,7 @@ import {ForgotPasswordService} from '../../../shared/services/forgot-password.se
 })
 export class EmailComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private forgot : ForgotPasswordService) { }
+  constructor(private fb: FormBuilder, private forgot : ForgotPasswordService , private toast : ToastrService) { }
   error : String;
   message : String;
 
@@ -31,9 +32,9 @@ export class EmailComponent implements OnInit {
       this.forgot.forgotPassword(this.emailForm.value).subscribe(res => {
 
         if(res.error){
-           this.error = res.message;
+           this.toast.error(res.message.toString(),"Error");
         }else{
-          this.message=res.message;
+          this.toast.success(res.message.toString(),"Success");
         }
       })
       

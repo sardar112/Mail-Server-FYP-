@@ -33,12 +33,17 @@ public message:String;
     //  console.log(res);
       if(res.error){
      this.error = res.message;
+     this.toastr.error(res.message.toString(),"Error");
+
       }else{
      // this.toastr.success('Hello world!', 'Toastr fun!');
 
-      this.message= res.message;
+    //  this.message= res.message;
        this.user= res;
-       this.image = 'http://localhost:3000/'+res.data.image
+      // this.image = 'http://localhost:3000/'+res.data.image
+
+       this.image = 'http://68.183.107.82:3000/'+res.data.image
+
    // console.log(this.image);
       }
     })
@@ -54,10 +59,16 @@ public message:String;
 
  deleteAccount(){
    this.data.deleteUser().subscribe(res=> {
+     
     if(res){
 
       localStorage.removeItem('token');
+    this.toastr.success(res.message.toString(),"Success");
+
     this.router.navigate(['register']);
+    }else{
+        //   this.toastr.error(res.message.toString(),"error");
+
     }
     });
 }

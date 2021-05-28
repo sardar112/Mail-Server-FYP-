@@ -8,7 +8,9 @@ import {registerUser} from '../../pages/auth/register/register.model'
 export class RegisterService {
 
 
-   url= "http://localhost:3000/api/register";
+  // url= "http://localhost:3000/api/register";
+   url= "http://68.183.107.82:3000/api/register";
+
 
   constructor( private http: HttpClient) { }
  

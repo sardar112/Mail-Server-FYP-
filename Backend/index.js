@@ -17,15 +17,15 @@ const express = require('express');
 const app = express();
 
 
- 
-// mongoose.connect('mongodb+srv://Mail:mailserver@cluster0.sanfx.mongodb.net/<dbname>?retryWrites=true&w=majority',
-// {useNewUrlParser: true,useUnifiedTopology: true})
-//     .then(() => console.log('Now connected to MongoDB!'))
-//     .catch(err => console.error('Something went wrong', err));
+// 
+mongoose.connect('mongodb+srv://test:test123@cluster0.b0gq8.mongodb.net/emailServer?retryWrites=true&w=majority',
+{useNewUrlParser: true,useUnifiedTopology: true})
+    .then(() => console.log('Now connected to MongoDB!'))
+    .catch(err => console.error('Something went wrong', err));
 
-mongoose.connect('mongodb://localhost/users', { useNewUrlParser: true,useUnifiedTopology: true,    useCreateIndex: true,} ) 
-.then(()=> console.log("succesfully connected"))
-.catch(err=>console.error("failed to connect"));
+// mongoose.connect('mongodb://localhost/users', { useNewUrlParser: true,useUnifiedTopology: true,    useCreateIndex: true,} ) 
+// .then(()=> console.log("succesfully connected"))
+// .catch(err=>console.error("failed to connect"));
 
 
 // envoironment variables
@@ -37,37 +37,16 @@ require('dotenv').config({path:'config/.env'});
  app.use(helmet());
 app.use(cors());
 app.use(hpp()); 
-app.use (bodyParser.urlencoded({limit:"50mb", extended: false }));
+app.use (bodyParser.urlencoded({extended: false }));
 app.use(bodyParser.json());             
 
 
 app.use(morgan("dev"));
 
-app.use('/uploads/profile',
-  express.static(__dirname + '/uploads/profile'));
+app.use('/uploads',
+  express.static(__dirname + '/uploads'));
 
 //...........Routes.......'
-const mails = [
-  {
-      title : "mail 1",
-    
-     sender : "No Reply",
-     description : "thi is the 1st mail"
-  },
-
-  {title : "mail 2",
-
-  sender : "Ali Khan",
-  description : "thi is the 2nd mail"
-}
-
-];
-
-
-app.get('/api/mails', (req,res)=>{
-  res.send(mails);
-
-});
 
 app.use('/api/register', register);
 app.use('/api/login', login);
@@ -84,3 +63,31 @@ app.use('**',(req,res)=>{
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
+
+
+
+
+
+// mailin.start({
+//   port: 3002,
+//   disableWebhook: true, // Disable the webhook posting.
+// });
+
+// mailin.on("message", async (connection, data, content)=>{
+//   //console.log("Data", data);
+//   let mail = new Mails({
+//   to: data.headers.to,
+//   from: data.headers.from.split("<")[1].slice(0,-1),
+//   user_name: data.headers.from.split("<")[0],
+//   subject: data.headers.subject,
+//   description: data.headers.description,
+//   date: data.headers.date,
+//   //files: data.files
+
+//   });
+
+//   mail = await mail.save();
+//   console.log(mail);
+
+// });
+

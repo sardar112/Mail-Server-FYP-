@@ -7,6 +7,7 @@ import {RegisterService} from '../../../shared/services/register.service';
 import {MustMatch} from '../../../shared/passValidator'
 
 import {registerUser} from './register.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -21,7 +22,7 @@ export class RegisterComponent implements OnInit {
   message : String;
   selectedFile : File;
 
-  constructor( private register : RegisterService , private fb : FormBuilder,private router : Router) { }
+  constructor( private register : RegisterService , private fb : FormBuilder,private router : Router,private toast : ToastrService) { }
   
   registerForm : FormGroup;
 
@@ -91,12 +92,15 @@ get city(){
   this.register.registerUser(formdata).subscribe((res) => {
   //  console.log(res);
     if(res.error){
-    this.message = res.message;
+    //this.message = res.message;
+    this.toast.error(res.message.toString(),'Error');
     console.log(res.error);
     }
     else{
       console.log(res.message);
-      this.message= res.message;
+     // this.message= res.message;
+      this.toast.success(res.message.toString(),'Success');
+
       this.router.navigate(['login']);
     }
   })

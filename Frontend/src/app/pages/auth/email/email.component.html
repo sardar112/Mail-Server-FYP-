@@ -11,15 +11,17 @@
 <form  [formGroup]="emailForm" (ngSubmit)="onSave()"  >
 
     <p class="h4 mb-4"> Recover Your Account </p>
-
+<!-- 
     <div *ngIf="error" class="text-danger">
         {{error}}
-       </div>
+       </div> -->
      
     <!-- Email -->
 <mat-card-content>
     <mat-form-field  class="input"  appearance="standard">
     <mat-label>Recovery E-mail</mat-label>
+    <mat-icon matSuffix>email</mat-icon>
+
     <input matInput type="email" formControlName="recovery_email" required>
      </mat-form-field>
 

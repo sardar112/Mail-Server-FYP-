@@ -9,3 +9,12 @@
     margin-left: 3rem;
     box-shadow: 10px;
    }
+
+  
+  
+input{
+    border-top-style: hidden;
+    border-right-style:10% ,black;
+    border-left-style: 10%,black;
+    border-bottom-style: hidden;
+  }

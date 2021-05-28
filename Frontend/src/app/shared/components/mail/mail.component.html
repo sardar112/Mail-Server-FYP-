@@ -1,27 +1,34 @@
-<h1 *ngIf="!mails">loading...</h1>
-<h1 *ngIf="mails&&mails.data.length===0">No mail found</h1>
+<h1 *ngIf="!mails">Loading...</h1>
+<h1 *ngIf="mails&&mails.data.length===0">No Email Found</h1>
 <div *ngIf="mails&&mails.data&&mails.data.length>0">
-<div class="pop"  *ngFor="let mail of mails.data" > 
-  <div class="container-fluid pointer shadow-sm p-3  bg-light rounded mt-1"
-
-   id="mail"       (mouseover)="over()" (mouseout)="leave()">
-    <div class="row" (click)="onLoadMaildeitail(mail._id)">
-      <div class="col-lg-1">
+  <div class="pop" *ngFor="let mail of mails.data">
+    <div class="container-fluid pointer shadow-sm p-3  bg-light rounded mt-1" id="mail" (mouseover)="over()"
+      (mouseout)="leave()">
+      <div class="row" (click)="onLoadMaildeitail(mail._id)">
+        <span class="col-1">
           <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="materialUnchecked">
-            </div>
-      </div>
+            <input type="checkbox" class="form-check-input">
+          </div>
+        </span>
 
-      <div class="col-lg-1">
-          {{mail.to}}
-      </div>
-      <div class="col-lg-8">
-        ----------------------------------  {{mail.subject}}--------- {{mail.from}}
-        </div>  
-                
-       
 
-        <div class="col-lg-2 pl" >
+        <div class="col-lg-8">
+
+          <span class="">{{mail.subject || mail.from}}</span>
+          <!-- <span class="">{{mail.subject || mail.userName}}</span> -->
+
+          <span class="ml-2">{{mail.description}}</span>
+
+
+        </div>
+        <div class="col-lg-2">
+
+          <span class="ml-2"> {{mail.date}}</span>
+        </div>
+
+
+
+        <!-- <div class="col-lg-2 pl" >
           <div class="row"*ngIf ="showIcons">
 
           <div class="col-lg-2">
@@ -38,31 +45,19 @@
             </span>
                </div>
 
-               <div class="col-lg-2">
-                <span class=" envelope">
-                  <i class="fa fa-envelope-open"></i>
-                 </span>
-  
-               </div>
-         
+               
 
         
-           <div class="col-lg-2">
-
-            <span class="clock">
-              <i class="fa fa-clock-o  " aria-hidden="true"></i>
-             </span>
-           </div>
           
 
       
       </div>
         
-        </div>
-        
+        </div> -->
+
+      </div>
+
     </div>
-   
-  </div>
-  
+
   </div>
 </div>

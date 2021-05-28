@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import{ DataService} from '../../services/data.service';
+import{ EmailsService} from '../../services/emails.service';
 import {Mail} from './mail.model';
 
 @Component({
@@ -11,30 +11,31 @@ import {Mail} from './mail.model';
 export class MailComponent implements OnInit {
   public showIcons = false;
  public mails :Mail;
- // public mails :any[]=[];
+  public searchText;
 
-  constructor(private data: DataService, private router: Router) { }
+  constructor(private email: EmailsService, private router: Router) { }
 
   ngOnInit(): void {
-    this.data.getData().subscribe(res => {
-  this.data.mailLength.next(res.data.length);
+    this.email.searchEmailText.subscribe(res=> {
+     // console.log(res);
+       this.email.searchEmail(res).subscribe(emails => {
+         this.mails=emails;
+         console.log(emails);
+       })
+      
+    //  this.searchText = res;
+     // console.log(res)
+    })
+    this.email.emailTo().subscribe(res => {
+  this.email.mailLength.next(res.data.length);
     this.mails=res;
- console.log(this.mails)
-//     this.mails= res.map(d=>{
-//         to:d.to;
-//         from:d.from;
-//         subject:d.subject;
-
-        
-
-//       });
-//       console.log(data);
-    
      },
     err =>{
     console.log(err);
    
     });
+
+    
 
   }
   over(){
@@ -48,5 +49,13 @@ export class MailComponent implements OnInit {
     onLoadMaildeitail(id){
       this.router.navigate(['/child/mail-details',id]);
     }
+
+// on_search_email(){
+//   this.email.searchEmail(this.searchText).subscribe(emails => {
+//    // this.mails=emails;
+//     console.log(emails);
+//   })
+// }
+
 
 }

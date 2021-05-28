@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Mail } from 'src/app/shared/components/mail/mail.model';
+import { EmailsService } from 'src/app/shared/services/emails.service';
 
 @Component({
   selector: 'app-sent',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SentComponent implements OnInit {
 
-  constructor() { }
+  public mails :Mail;
+
+  constructor(private router: Router,private email:EmailsService) { }
 
   ngOnInit(): void {
+
+  this.email.getFrom().subscribe(res=>{
+    this.mails = res;
+  })
   }
 
+
+  onLoadMaildeitail(id){
+    this.router.navigate(['/child/mail-details',id]);
+  }
 }

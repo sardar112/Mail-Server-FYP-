@@ -9,6 +9,7 @@ const express = require('express');
 const router = express.Router();
 
 
+
 router.get('/', auth, async (req, res) => {
   const user = await User.findById(req.user._id);
 
@@ -84,3 +85,5 @@ function validate(user) {
 
 }
 module.exports = router; 
+
+

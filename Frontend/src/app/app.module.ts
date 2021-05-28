@@ -11,7 +11,6 @@ import {TokenIntercepterService} from './shared/guard/token-intercepter.service'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MaterialModule } from './pages/public/material/material.module';
-import { PagenotfoundComponent } from './pages/pagenotfound/pagenotfound.component';
 
 
 
@@ -25,10 +24,6 @@ const appRoutes : Routes = [
  
   { path : "" , loadChildren:()=> import("./pages/public/public.module").then(mod => mod.PublicModule)}, 
   { path : "mails" ,loadChildren:()=> import("./pages/child-module/child-module.module").then(mod => mod.ChildModuleModule)}, 
-  {
-    path: '**', 
-    component: PagenotfoundComponent
-  },
 
 ];
   
@@ -37,7 +32,6 @@ const appRoutes : Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    PagenotfoundComponent,
  
   
    

@@ -16,6 +16,7 @@ import { ResetPasswordComponent } from '../../pages/auth/reset-password/reset-pa
 import { EditprofileComponent } from '../../pages/auth/editprofile/editprofile.component';
 import { EmailComponent } from '../../pages/auth/email/email.component';
 import {AuthGuard} from '../../shared/guard/auth.guard';
+import { PagenotfoundComponent } from '../pagenotfound/pagenotfound.component';
 
 
 
@@ -30,6 +31,7 @@ const publicRoutes : Routes = [
     { path : "settings" , component : SettingsComponent,  canActivate : [AuthGuard],}, 
     { path : "editprofile" , component : EditprofileComponent,  canActivate : [AuthGuard],}, 
     { path : "email" , component : EmailComponent}, 
+    {  path: '**',  component: PagenotfoundComponent },
 
 
   ] }, 
@@ -48,6 +50,7 @@ const publicRoutes : Routes = [
     ResetPasswordComponent,
     EditprofileComponent,
     EmailComponent,
+    PagenotfoundComponent
 
   
   ],
@@ -59,8 +62,8 @@ const publicRoutes : Routes = [
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       timeOut: 10000,
-      positionClass:'inline',
       preventDuplicates: true,
+      
     }),
     RouterModule.forChild(publicRoutes),
   ],

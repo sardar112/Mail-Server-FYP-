@@ -1,8 +1,10 @@
 .text{
   margin-top: 2rem;
   margin-left: 4rem;
-    font-size : 20px;
-}   
+    font-size : 25px;
+    color :black;
+    text-shadow: 25px 2px 30px #050505;
+  }   
 
 
 .a{
@@ -12,3 +14,14 @@ margin-bottom: 2rem;
 margin-left: 5rem;
 text-emphasis:bold;
 }
+.home {
+  background-image: url("../../../../assets/2579694.jpg");
+  width : 100%;
+  height : 100%;
+  font-size: 120px;
+  text-align: left;
+  font-weight: bold;
+  font-family:'Courier New', Courier, monospace;
+  font-weight: 500;
+
+ }

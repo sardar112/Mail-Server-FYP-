@@ -23,10 +23,10 @@ const Mails=mongoose.model("Mails",new mongoose.Schema({
 
     },
 
-    // files: {
-    //     type:[String],
+    files: {
+        type:[String],
 
-    // }
+    }
 
     
     }));

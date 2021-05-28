@@ -7,12 +7,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
-import { InboxComponent } from '../inbox/inbox.component';
 import { AllMailsComponent } from '../all-mails/all-mails.component';
 import { MailDetailsComponent } from '../mail-details/mail-details.component';
 import { SentComponent } from '../sent/sent.component';
 import { DraftComponent } from '../draft/draft.component';
-import { ImportantComponent } from '../important/important.component';
 import { HeaderComponent } from '../../layout/header/header.component';
 import { FooterComponent } from '../../layout/footer/footer.component';
 import { SidebarComponent } from '../../layout/sidebar/sidebar.component';
@@ -30,11 +28,9 @@ const childRoutes : Routes = [
   children:[
 
     { path : "mail" , component : MailComponent }, 
-    { path : "inbox", component : InboxComponent },
     { path : "all-mails" , component : AllMailsComponent },
     { path : "sent" , component : SentComponent}, 
     { path : "draft" , component : DraftComponent},
-    { path : "important" , component : ImportantComponent}, 
     { path : "mail-details/:id" , component : MailDetailsComponent}, 
 
   
@@ -49,12 +45,10 @@ const childRoutes : Routes = [
 @NgModule({
   declarations: [
     ChildModuleComponent,
-    InboxComponent,
     AllMailsComponent,
     MailDetailsComponent,
     SentComponent,
     DraftComponent,
-    ImportantComponent,
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
@@ -72,6 +66,7 @@ const childRoutes : Routes = [
       timeOut: 10000,
       positionClass:'inline',
       preventDuplicates: true,
+      
     }),
     RouterModule.forChild(childRoutes),
   ]

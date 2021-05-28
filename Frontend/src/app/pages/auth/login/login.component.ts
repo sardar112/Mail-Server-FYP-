@@ -5,6 +5,7 @@ import { Validators } from '@angular/forms';
 import {LoginService} from '../../../shared/services/login.service';
 
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
   token:String;
    
 
-  constructor(private loginService: LoginService, private fb : FormBuilder,private router: Router) { }
+  constructor(private loginService: LoginService, private fb : FormBuilder,private router: Router ,private toastr:ToastrService) { }
 
  loginForm : FormGroup;
 
@@ -47,13 +48,16 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.loginService.loginUser(this.loginForm.value).subscribe((res) => {
       if(res.error){
-      this.error = res.message;
+        this.toastr.error(res.message.toString(),"Error")
+     // this.error = res.message;
       }
       else{
  
-        this.message= res.message;
-       localStorage.setItem("token",res.data.toString());
+        localStorage.setItem("token",res.data.toString());
+        this.toastr.success(res.message.toString(),'Success');
+
         this.router.navigate(['child/mail']);
+
       }
     })
     
@@ -62,7 +66,7 @@ export class LoginComponent implements OnInit {
  
 //register routes
    register() {
-    this.router.navigate(['resgister']);
+    this.router.navigate(['/register']);
   }
 //email rout for reset password
   Email() {

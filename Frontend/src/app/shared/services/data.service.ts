@@ -10,36 +10,32 @@ import { registerUser } from 'src/app/pages/auth/register/register.model';
 })
 export class DataService {
 
-  mailLength=new BehaviorSubject(0);
 
   constructor( private http : HttpClient) { }
-   getData(){
-
-    return this.http.get<Mail>("http://localhost:3000/api/mail/from");
-
-   }
-   getSingleEmail(id){
-
-    return this.http.get<any>("http://localhost:3000/api/mail/single/"+id);
-
-   }
+  
    // update user
 updateUser(updateData){
 
-  return this.http.put<updateUser>("http://localhost:3000/api/getuser/edit",updateData)
+ // return this.http.put<updateUser>("http://localhost:3000/api/getuser/edit",updateData)
+  return this.http.put<updateUser>("http://68.183.107.82:3000/api/getuser/edit",updateData)
+
 
 }
 // getting the user
 getUser(){
 
-  return this.http.get<registerUser>("http://localhost:3000/api/getuser")
+  //return this.http.get<registerUser>("http://localhost:3000/api/getuser")
+  return this.http.get<registerUser>("http://68.183.107.82:3000/api/getuser")
+
   
 
 }
 // delete user
 deleteUser(){
 
-  return this.http.delete("http://localhost:3000/api/getuser")
+  //return this.http.delete("http://localhost:3000/api/getuser")
+  return this.http.delete(`http://68.183.107.82:3000/api/getuser`)
+
   
 
 }
