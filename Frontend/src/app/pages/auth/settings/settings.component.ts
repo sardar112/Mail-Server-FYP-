@@ -32,8 +32,8 @@ public message:String;
     this.data.getUser().subscribe((res)=> {
     //  console.log(res);
       if(res.error){
-     this.error = res.message;
-     this.toastr.error(res.message.toString(),"Error");
+   //  this.error = res.message;
+this.toastr.error(res.message.toString(),"Error");
 
       }else{
      // this.toastr.success('Hello world!', 'Toastr fun!');
@@ -42,7 +42,7 @@ public message:String;
        this.user= res;
       // this.image = 'http://localhost:3000/'+res.data.image
 
-       this.image = 'http://68.183.107.82:3000/'+res.data.image
+       this.image = 'http://162.243.166.89:3000/'+res.data.image
 
    // console.log(this.image);
       }
@@ -63,7 +63,7 @@ public message:String;
     if(res){
 
       localStorage.removeItem('token');
-    this.toastr.success(res.message.toString(),"Success");
+    //this.toastr.success(res.message.toString(),"Success");
 
     this.router.navigate(['register']);
     }else{
@@ -74,9 +74,6 @@ public message:String;
 }
 
 
-moveToProfile(){
-  this.router.navigate(['profile']);
-}
 
 
 

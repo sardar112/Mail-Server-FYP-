@@ -12,15 +12,18 @@
 
 
         <div class="col-lg-8">
+          <span class="">{{mail.user_name}}</span>
 
-          <span class="">{{mail.subject || mail.from}}</span>
-          <span class="ml-2">{{mail.description}}</span>
+          <span class="ml-2">{{mail.subject || mail.from}}</span>
+          <!-- <span class="ml-2" [innerHTML]="mail.description"></span> -->
+          <!-- <span class="ml-2" >{{mail.description}}</span> -->
+
 
 
         </div>
         <div class="col-lg-2">
 
-          <span class="ml-2"> {{mail.date |date:'fullDate'}}</span>
+          <span class="ml-2"> {{mail.date | date:'fullDate'}}</span>
         </div>
 
 

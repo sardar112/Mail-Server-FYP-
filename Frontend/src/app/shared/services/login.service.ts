@@ -13,7 +13,7 @@ export class LoginService {
 
   
   //url= "http://localhost:3000/api/login";
-  url= "http://68.183.107.82:3000/api/login";
+  url= "http://162.243.166.89:3000/api/login";
 
   constructor( private http: HttpClient , private router: Router) { }
  

@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
      // this.error = res.message;
       }
       else{
- 
+   console.log(res)
         localStorage.setItem("token",res.data.toString());
         this.toastr.success(res.message.toString(),'Success');
 

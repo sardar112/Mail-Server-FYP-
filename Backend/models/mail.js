@@ -1,18 +1,18 @@
 const mongoose = require('mongoose');
+const mongoose_fuzzy_searching = require('mongoose-fuzzy-searching');
+
 const Mails=mongoose.model("Mails",new mongoose.Schema({
     
     to: {
         type:String,
-      //  required : true,
+        required : true,
       //  lowercase: true,
     },
     from:{
         type : String,
        // lowercase: true,
     },
-    // user_first_name{
-
-    // }
+    user_name: {type:String},
     subject: {
         type:String,
 
@@ -20,6 +20,10 @@ const Mails=mongoose.model("Mails",new mongoose.Schema({
     },
     description:{
         type:String,
+
+    },
+    date:{
+        type:Date,
 
     },
 
@@ -30,4 +34,6 @@ const Mails=mongoose.model("Mails",new mongoose.Schema({
 
     
     }));
+
+
 module.exports = Mails;

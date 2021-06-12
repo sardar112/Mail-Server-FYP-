@@ -20,7 +20,7 @@ export class MailComponent implements OnInit {
      // console.log(res);
        this.email.searchEmail(res).subscribe(emails => {
          this.mails=emails;
-         console.log(emails);
+        // console.log(emails);
        })
       
     //  this.searchText = res;
@@ -50,12 +50,7 @@ export class MailComponent implements OnInit {
       this.router.navigate(['/child/mail-details',id]);
     }
 
-// on_search_email(){
-//   this.email.searchEmail(this.searchText).subscribe(emails => {
-//    // this.mails=emails;
-//     console.log(emails);
-//   })
-// }
+
 
 
 }

@@ -18,7 +18,7 @@ import { MailComponent } from '../../shared/components/mail/mail.component';
 import { ComposeComponent } from '../compose/compose.component';
 import {AuthGuard} from '../../shared/guard/auth.guard';
 import { MaterialModule } from '../public/material/material.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 const childRoutes : Routes = [
@@ -61,6 +61,8 @@ const childRoutes : Routes = [
     MaterialModule,
     CKEditorModule,
     ReactiveFormsModule,
+    FormsModule,
+
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       timeOut: 10000,

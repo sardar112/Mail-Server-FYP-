@@ -9,7 +9,6 @@ const express = require('express');
 const router = express.Router();
 
 
-
 router.get('/', auth, async (req, res) => {
   const user = await User.findById(req.user._id);
 
@@ -34,7 +33,7 @@ router.put('/edit', auth, async (req, res) => {
 
   let user = await User.findByIdAndUpdate({ _id: req.user._id });
 
-  if (!user) return user.json({ error: true, message: 'The user with the given id is not available' });
+  if (!user) return user.json({ error: true, message: "The user with the given id is not available" });
 
   // return res.status(404).send('the user with the given id is not available');
 
@@ -54,17 +53,19 @@ router.put('/edit', auth, async (req, res) => {
 
   }
   await user.save();
-  res.json({ error: false, message: 'Succesfuly Updated!' });
+  res.json({ error: false, message: "Account Succesfuly Updated" });
 });
 
 
 router.delete('/', auth, async (req, res) => {
   const user = await User.findByIdAndRemove(req.user._id);
 
-  if (!user) return res.json({ error: true, message: 'The User with the given ID was not found.' });
-
-  res.json({ error: false, message: 'Succesfuly Deleted!' });
-
+  if (!user) {
+  
+  return res.json({ error: true, message: "The User with the given ID was not found." });
+  }else{
+  res.json({ error: false, message: "Account Succesfuly Deleted" });
+  }
 });
 
 
@@ -85,5 +86,3 @@ function validate(user) {
 
 }
 module.exports = router; 
-
-

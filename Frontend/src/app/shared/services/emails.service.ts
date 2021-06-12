@@ -16,7 +16,7 @@ export class EmailsService {
    getFrom(){
 
    // return this.http.get<Mail>("http://localhost:3000/api/mail/from");
-    return this.http.get<Mail>("http://68.183.107.82:3000/api/mail/from");
+    return this.http.get<Mail>("http://162.243.166.89:3000/api/mail/from");
 
 
    }
@@ -24,7 +24,7 @@ export class EmailsService {
    emailTo(){
 
     // return this.http.get<Mail>("http://localhost:3000/api/mail/from");
-     return this.http.get<Mail>("http://68.183.107.82:3000/api/mail/to");
+     return this.http.get<Mail>("http://162.243.166.89:3000/api/mail/to");
  
  
      }
@@ -32,7 +32,7 @@ export class EmailsService {
    getSingleEmail(id){
 
    // return this.http.get<any>("http://localhost:3000/api/mail/single/"+id);
-    return this.http.get<any>("http://68.183.107.82:3000/api/mail/single/"+id);
+    return this.http.get<any>("http://162.243.166.89:3000/api/mail/single/"+id);
 
 
    }
@@ -40,18 +40,22 @@ export class EmailsService {
    getAllEmails(){
 
     // return this.http.get<Mail>("http://localhost:3000/api/mail/from");
-     return this.http.get<Mail>("http://68.183.107.82:3000/api/mail/all");
+     return this.http.get<Mail>("http://162.243.166.89:3000/api/mail/all");
  
  
     }
     //searchEmail
- searchEmail(text){
-   return this.http.post<Mail>("http://68.183.107.82:3000/api/mail/search",text)
+  searchEmail(text){
+   return this.http.post<Mail>("http://162.243.166.89:3000/api/mail/search",text)
  }
+// search subject
+ searchSubject(text){
+  return this.http.post<any>("http://162.243.166.89:3000/api/mail/searchSubject",text)
+}
 
  
  deleteEmail(id){
-  return this.http.delete<Mail>("http://68.183.107.82:3000/api/mail/delete/"+id);
+  return this.http.delete<Mail>("http://162.243.166.89:3000/api/mail/delete/"+id);
 }
 
 

@@ -17,7 +17,7 @@ export class DataService {
 updateUser(updateData){
 
  // return this.http.put<updateUser>("http://localhost:3000/api/getuser/edit",updateData)
-  return this.http.put<updateUser>("http://68.183.107.82:3000/api/getuser/edit",updateData)
+  return this.http.put<updateUser>("http://162.243.166.89:3000/api/getuser/edit",updateData)
 
 
 }
@@ -25,7 +25,7 @@ updateUser(updateData){
 getUser(){
 
   //return this.http.get<registerUser>("http://localhost:3000/api/getuser")
-  return this.http.get<registerUser>("http://68.183.107.82:3000/api/getuser")
+  return this.http.get<registerUser>("http://162.243.166.89:3000/api/getuser")
 
   
 
@@ -34,7 +34,7 @@ getUser(){
 deleteUser(){
 
   //return this.http.delete("http://localhost:3000/api/getuser")
-  return this.http.delete(`http://68.183.107.82:3000/api/getuser`)
+  return this.http.delete(`http://162.243.166.89:3000/api/getuser`)
 
   
 

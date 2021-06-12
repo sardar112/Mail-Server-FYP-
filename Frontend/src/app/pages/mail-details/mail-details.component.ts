@@ -24,27 +24,27 @@ export class MailDetailsComponent implements OnInit {
   
   this.emails.getSingleEmail(this.id).subscribe(res => 
     {
-      console.log(res);
+     // console.log(res);
        this.email = res.data;
        
-       console.log(this.email);
+     //  console.log(this.email);
     });
   }
 
   onDeleteEmail(){
 this.emails.deleteEmail(this.id).subscribe(res => {
-  console.log(res);
+  //console.log(res);
   if(res){
 this.toast.success(res.message.toString(),"Success")
     this.router.navigate(['/child/mail']);
   }else{
-  console.log (res.error)
+ // console.log (res.error)
   this.toast.error(res.message.toString(),"Error")
 
   }
 })
   }
-
+            
 
   getExtension(filename)
 {

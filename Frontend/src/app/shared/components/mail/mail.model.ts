@@ -11,5 +11,6 @@ export interface Data{
     from : String,
     subject : String,
     description : String,
+    user_name : String,
     date:Date
 }

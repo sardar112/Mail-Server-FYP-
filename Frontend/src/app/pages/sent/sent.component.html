@@ -14,13 +14,13 @@
         <div class="col-lg-8">
 
           <span class="">{{mail.subject}}</span>
-          <span class="ml-2">{{mail.description}}</span>
+          <span class="ml-2">{{mail.from}}</span>
 
 
         </div>
         <div class="col-lg-2">
 
-          <span class="ml-2"> {{mail.date}}</span>
+          <span class="ml-2"> {{mail.date | date:'fullDate'}}</span>
         </div>
 
 

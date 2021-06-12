@@ -10,7 +10,7 @@ const router = express.Router();
 router.post('/',upload.single('profile') ,async (req, res) => {
    
     const { error } = validate({...req.body,image: req.file.filename});
-    // console.log(error);
+     console.log(error);
     if (error) {
 
         return res.json({
@@ -26,7 +26,7 @@ router.post('/',upload.single('profile') ,async (req, res) => {
 
         return res.json({
             error: true,
-            message : 'That user already exisits!',
+            message : 'That user already exisits',
             status : 404,
         })
         

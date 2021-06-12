@@ -6,6 +6,6 @@ export interface composeEmail{
     to: String,
     subject: String,
     description: String,
-   // files:[]
+    files:[]
     }
 }

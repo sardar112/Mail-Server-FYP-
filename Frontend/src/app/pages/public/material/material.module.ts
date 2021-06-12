@@ -12,6 +12,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 //import { MatTreeModule } from '@angular/material/tree';
 import { MatBadgeModule } from '@angular/material/badge';
+//import { MatProgressSpinnerModule } from '@angular/material';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
@@ -32,7 +34,9 @@ const Materials =[
   MatTooltipModule,
   MatIconModule,
   MatInputModule,
- MatSelectModule
+ MatSelectModule,
+ MatProgressSpinnerModule
+
 
 ]
 

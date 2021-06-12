@@ -12,14 +12,14 @@ export class ForgotPasswordService {
 
   forgotPassword(email){
  // return this.http.post<email>("http://localhost:3000/api/forgot-password",email);
-  return this.http.post<email>("http://68.183.107.82:3000/api/forgotPassword",email);
+  return this.http.post<email>("http://162.243.166.89:3000/api/forgotPassword",email);
 
   }
 
   
   resetPassword(token,password){
    // return this.http.put<resetPassword>("http://localhost:3000/api/forgot-password/"+token,password);
-    return this.http.put<resetPassword>("http://68.183.107.82:3000/api/forgotPassword/"+token,password);
+    return this.http.put<resetPassword>("http://162.243.166.89:3000/api/forgotPassword/"+token,password);
 
 
     }
